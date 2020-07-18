@@ -2,4 +2,4 @@
 
 ## personal study
 
--[] movie date : https://www.themoviedb.org
+- movie date : https://www.themoviedb.org
