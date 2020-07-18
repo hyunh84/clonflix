@@ -1,1 +1,5 @@
-# clonflix - react study
+# clonflix
+
+## personal study
+
+-[] movie date : https://www.themoviedb.org
