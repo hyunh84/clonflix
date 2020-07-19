@@ -15,11 +15,11 @@
 - MOVIE
 - TV
 
-* Home
+### Home
 - TV Popular, Movie Popular
 
-* Movie
+### Movie
 - Movie Popular, Movie Now playing, Movie Upcoming, Movie Top Rated
 
-* TV
+### TV
 - TV Popular, TV Top Rated, TV Airing
