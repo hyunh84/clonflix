@@ -1,5 +1,7 @@
 # clonflix
 
+TMDB API와 REACT를 이용한 영화재생 사이트
+
 ## personal study
 - movie date : https://www.themoviedb.org
 
