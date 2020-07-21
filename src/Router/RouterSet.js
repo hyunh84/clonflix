@@ -20,10 +20,11 @@ const RouterSet = () => {
 			<div id="container">
 				<Switch>
 					<Route path="/" exact component={Home} />
-					<Route path="/tv" component={Tv} />
-					<Route path="/movie" component={Movie} />
+					<Route path="/tv" exact component={Tv} />
+					<Route path="/tv/:id" component={Detail} />
+					<Route path="/movie" exact component={Movie} />
+					<Route path="/movie/:id" component={Detail} />
 					<Route path="/search" component={Search} />
-					<Route path="/detail" component={Detail} />
 					<Redirect from="*" to="/" />
 				</Switch>
 			</div>

@@ -12,11 +12,6 @@ const tvApi = {
 	airingToday: ()=> Api.get('tv/airing_today'),
 	popular: ()=> Api.get('tv/popular'),
 	topRated: ()=> Api.get('tv/top_rated'),
-	detail: (id)=>  Api.get(`/tv/${id}`, {
-		params:{
-			append_to_response:'videos'
-		}
-	}),
 }
 
 const movieApi = {
@@ -24,11 +19,6 @@ const movieApi = {
 	popular: ()=> Api.get('movie/popular'),
 	topRated: ()=> Api.get('movie/top_rated'),
 	upcoming: ()=> Api.get('movie/upcoming'),
-	detail: (id)=>  Api.get(`/movie/${id}`, {
-		params:{
-			append_to_response:'videos'
-		}
-	}),
 }
 
 const searchApi = {
@@ -49,8 +39,15 @@ const searchApi = {
 	}),
 }
 
+const detailApi = {
+	detail: (type, id)=> Api.get(`${type}/${id}`, {
+		params:{
+			append_to_response:'videos'
+		}
+	})
+}
+
 export {tvApi};
-
 export {movieApi};
-
 export {searchApi};
+export {detailApi};

@@ -1,8 +1,9 @@
 @charset "utf-8";
 
-#root {position:relative;box-sizing:border-box;height:100%;min-height:100%;height:auto !important;padding:64px 0 0;color:#fff;background-color:#000;}
+#root {position:relative;box-sizing:border-box;height:100%;min-height:100%;height:auto !important;padding:64px 0 0;color:#fff;background-color:#212121;}
 
-#header {position:fixed;top:0;left:0;right:0;z-index:50;}
-#header .gnb ul {overflow:hidden;}
-#header .gnb ul li {float:left;padding:20px;}
+#header {position:fixed;top:0;left:0;right:0;z-index:50;border-bottom:1px solid #000;background-color:#212121;}
+#header .gnb ul:after {display:block;content:"";overflow:hidden;width:0;height:0;line-height:0;clear:both;}
+#header .gnb ul li {float:left;position:relative;padding:20px;}
 #header .gnb ul li a {display:block;line-height:24px;font-size:16px;font-weight:500;color:#fff;}
+#header .gnb ul li.active:after {display:block;content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background-color:#fff;}
