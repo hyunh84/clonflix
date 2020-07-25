@@ -1,35 +1,23 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useContext} from 'react';
 import { Link } from 'react-router-dom';
+import {GState} from 'Router/GState';
 
 
 const Header = () => {
 	const gnbWrapEl = useRef(null);
+	const {depth1} = useContext(GState);
 
-	useEffect(()=>{
-		const menuItemEl=gnbWrapEl.current.childNodes;
-		// console.log(gnbWrapEl);
-		menuItemEl.forEach((val, i)=>{
-			val.childNodes[0].addEventListener('click', (e)=>{
-				if(val.classList.value !== 'active') {
-					menuItemEl.forEach((el, j)=>{
-						el.classList.remove('active');
-					});
-					val.classList.add('active');
-				}
-			});
-		});
-	});
 	return (
 		<header id="header">
 			<nav className="gnb">
 				<ul ref={gnbWrapEl}>
-					<li className="active">
+					<li className={depth1 === '' ? 'active' : ''}>
 						<Link to={"/"}>Home</Link>
 					</li>
-					<li>
+					<li className={depth1 === 'tv' ? 'active' : ''}>
 						<Link to={"/tv"}>TV</Link>
 					</li>
-					<li>
+					<li className={depth1 === 'movie' ? 'active' : ''}>
 						<Link to={"/movie"}>Movie</Link>
 					</li>
 				</ul>
