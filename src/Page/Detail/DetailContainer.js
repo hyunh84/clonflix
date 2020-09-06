@@ -1,10 +1,10 @@
 import React from "react";
 import DetailPresenter from "./DetailPresenter";
 import { detailApi } from "Api/api";
-// 539181
 
 export default class extends React.Component{
 	state={
+		type: null,
 		result: null,
 		error: null,
 		loading: true,
@@ -13,22 +13,21 @@ export default class extends React.Component{
 	async componentDidMount() {
 		const {
 			match : {
-				params: {id : detailID},
-				url: detailType,
-			},
-			history: { push }
+				params : {
+					id : videoID,
+					type,
+				}
+			}
 		} = this.props;
 
 		try{
-			if(isNaN(parseInt(detailID, 10))) {
-				return push(`/${detailType.split('/')[1]}`);
-			}
 			const {
 				data : result
-			} = await detailApi.detail(detailType.split('/')[1], parseInt(detailID, 10));
+			} = await detailApi.detail(type.replace(':', ''), parseInt(videoID.replace(':', ''), 10));
 
 			this.setState({
 				result,
+				type:type.replace(':', ''),
 			});
 		}catch{
 			this.setState({
@@ -42,13 +41,17 @@ export default class extends React.Component{
 	}
 
 	render() {
-		const {result, error, loading} = this.state;
-		return(
-			<DetailPresenter
-				result={result}
-				error={error}
-				loading={loading}
-			/>
-		);
+		const {result, type, error, loading} = this.state;
+		if(!loading) {
+			// console.log(this.state);
+			return(
+				<DetailPresenter
+					result={result}
+					type={type}
+				/>
+			);
+		}
+		return '';
+
 	}
 };

@@ -1,20 +1,39 @@
 import React, {useEffect, useContext} from 'react';
-import { useParams, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ListSlide from 'Component/listSlide';
 import { GState } from 'Router/GState';
 
-const HomePresenter = ()=>{
-	const {setParams, setDepth1} = useContext(GState);
-	const {id : params} = useParams();
+const HomePresenter = ({moviePopular, tvPopular})=>{
+	const {setDepth1} = useContext(GState);
 	const {url} = useRouteMatch();
-	
-	useEffect(()=>{
-		setParams(params);
-		setDepth1(url.split('/')[1]);
 
+	useEffect(()=>{
+		// setDepth1('tv');
+		setDepth1(url.split('/')[1]);
 	});
 
 	return(
-		<div>HOME</div>
+		<div className="mainConts">
+			<ListSlide
+				title="TV"
+				data={tvPopular}
+				type={'tv'}
+			/>
+
+			<ListSlide
+				title="MOVIE"
+				data={moviePopular}
+				type={'movie'}
+			/>
+		</div>
 	);
 }
+
+HomePresenter.propTypes = {
+	moviePopular : PropTypes.array.isRequired,
+	tvPopular : PropTypes.array.isRequired,
+}
+
+
 export default HomePresenter;

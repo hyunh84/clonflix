@@ -1,6 +1,7 @@
 import React, {useRef, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import {GState} from 'Router/GState';
+import SearchBox from 'Component/searchBox'
 
 
 const Header = () => {
@@ -22,6 +23,8 @@ const Header = () => {
 					</li>
 				</ul>
 			</nav>
+
+			<SearchBox />
 		</header>
 	);
 }

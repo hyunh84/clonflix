@@ -5,12 +5,12 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom';
+import Header from 'Layout/Header';
 import Home from 'Page/Home';
 import Tv from 'Page/Tv';
 import Movie from 'Page/Movie';
 import Search from 'Page/Search';
 import Detail from 'Page/Detail';
-import Header from 'Layout/Header';
 
 const RouterSet = () => {
 	return (
@@ -21,10 +21,9 @@ const RouterSet = () => {
 				<Switch>
 					<Route path="/" exact component={Home} />
 					<Route path="/tv" exact component={Tv} />
-					<Route path="/tv/:id" component={Detail} />
 					<Route path="/movie" exact component={Movie} />
-					<Route path="/movie/:id" component={Detail} />
-					<Route path="/search" component={Search} />
+					<Route path="/detail/:type/:id" exact component={Detail} />
+					<Route path="/search/:keyword" exact component={Search} />
 					<Redirect from="*" to="/" />
 				</Switch>
 			</div>

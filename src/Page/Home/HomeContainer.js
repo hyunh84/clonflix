@@ -35,14 +35,15 @@ export default class extends React.Component{
 
 	render() {
 		const {tvPopular, moviePopular, error, loading} = this.state;
-		// console.log(this.state);
-		return(
-			<HomePresenter
-				moviePopular={moviePopular}
-				tvPopular={tvPopular}
-				error={error}
-				loading={loading}
-			/>
-		);
+		if(!loading) {
+			// console.log(this.state);
+			return(
+				<HomePresenter
+					moviePopular={moviePopular}
+					tvPopular={tvPopular}
+				/>
+			);
+		}
+		return '';
 	}
 };

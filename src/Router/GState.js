@@ -8,14 +8,10 @@ const GStateProvider = ({ children }) => {
 
 	// 화면 메뉴 1 depth name defualt home
 	const [depth1, setDepth1] = useState('');
-	// location URL :id값
-	const [params, setParams] = useState(null);
 
 	const value = {
 		depth1,
 		setDepth1,
-		params,
-		setParams,
 	};
 	
 	return <GState.Provider value={value}>{children}</GState.Provider>;

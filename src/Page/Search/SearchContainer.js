@@ -4,26 +4,26 @@ import { searchApi } from "Api/api";
 
 export default class extends React.Component{
 	state={
-		movieResults:null,
-		tvResults:null,
+		results:null,
 		error: null,
 		loading: true,
 	};
 
 	searchByTerm = async () => {
-		const { searchTerm } = this.state;
-		this.setState({ loading: true });
+		const {
+			match : {
+				params
+			}
+		} = this.props;
+console.log(params);
 		try {
-			const {
-				data: { results: movieResults }
-			} = await searchApi.movie(searchTerm);
-			const {
-				data: { results: tvResults }
-			} = await searchApi.tv(searchTerm);
-			this.setState({
-				movieResults,
-				tvResults
-			});
+			// console.log(keyword.replace(':', ''));
+			// const {
+			// 	data: results
+			// } = await searchApi.keyword(keyword.replace(':', ''));
+			// this.setState({
+			// 	results,
+			// });
 		} catch {
 			this.setState({ error: "Can't find results." });
 		} finally {
@@ -32,15 +32,16 @@ export default class extends React.Component{
 	};
 
 	render() {
-		const {movieResults, tvResults, error, loading} = this.state;
+		const {results, error, loading} = this.state;
 
-		return(
-			<SearchPresenter
-				movieResults={movieResults}
-				tvResults={tvResults}
-				error={error}
-				loading={loading}
-			/>
-		);
+		if(!loading) {
+			console.log(this.state);
+			return(
+				<SearchPresenter
+					results={results}
+				/>
+			);
+		}
+		return '';
 	}
 };

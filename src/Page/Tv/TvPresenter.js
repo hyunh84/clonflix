@@ -1,20 +1,47 @@
 import React, {useEffect, useContext} from 'react';
-import { useParams, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ListSlide from 'Component/listSlide';
 import { GState } from 'Router/GState';
 
-const TvPresenter = ()=>{
-	const {setParams, setDepth1} = useContext(GState);
-	const {id : params} = useParams();
+const TvPresenter = ({airingToday, topRated, popular})=>{
+	const {setDepth1} = useContext(GState);
 	const {url} = useRouteMatch();
-	
-	useEffect(()=>{
-		setParams(params);
-		setDepth1(url.split('/')[1]);
 
+	useEffect(()=>{
+		// setDepth1('tv');
+		setDepth1(url.split('/')[1]);
 	});
 
 	return(
-		<div>TV</div>
-	);
+		<div className="contents">
+
+			<ListSlide
+				title="금일방영"
+				data={airingToday}
+				type={'tv'}
+			/>
+	
+			<ListSlide
+				title="인기방송"
+				data={popular}
+				type={'tv'}
+			/>
+	
+			<ListSlide
+				title="연관방송"
+				data={topRated}
+				type={'tv'}
+			/>
+
+		</div>
+	)
 }
+
+TvPresenter.propTypes = {
+	airingToday : PropTypes.array.isRequired,
+	topRated : PropTypes.array.isRequired,
+	popular : PropTypes.array.isRequired, 
+}
+
 export default TvPresenter;

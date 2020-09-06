@@ -2,6 +2,9 @@
 
 TMDB API와 REACT를 이용한 영화사이트
 
+## API KEY
+- 4efdcae366c925f5509cb9116e65e876
+
 ## personal study
 - movie date : https://www.themoviedb.org
 
