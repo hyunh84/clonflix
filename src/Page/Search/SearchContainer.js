@@ -1,29 +1,37 @@
 import React from "react";
 import SearchPresenter from "./SearchPresenter";
+import SearchNoDataPresenter from "./SearchNoDataPresenter";
 import { searchApi } from "Api/api";
 
 export default class extends React.Component{
 	state={
-		results:null,
+		keyword: null,
+		searchResults: null,
 		error: null,
 		loading: true,
 	};
 
-	searchByTerm = async () => {
+	async componentDidMount() {
 		const {
 			match : {
-				params
+				params : {
+					keyword,
+				}
 			}
 		} = this.props;
-console.log(params);
+
 		try {
-			// console.log(keyword.replace(':', ''));
-			// const {
-			// 	data: results
-			// } = await searchApi.keyword(keyword.replace(':', ''));
-			// this.setState({
-			// 	results,
-			// });
+			const {
+				data: {results : tvResults}
+			} = await searchApi.tv(keyword.replace(':', ''));
+			const {
+				data: {results : movieResults}
+			} = await searchApi.movie(keyword.replace(':', ''));
+
+			this.setState({
+				keyword : keyword.replace(':', ''),
+				searchResults : [...tvResults, ...movieResults],
+			});
 		} catch {
 			this.setState({ error: "Can't find results." });
 		} finally {
@@ -32,15 +40,24 @@ console.log(params);
 	};
 
 	render() {
-		const {results, error, loading} = this.state;
+		const {searchResults, keyword, error, loading} = this.state;
 
 		if(!loading) {
-			console.log(this.state);
-			return(
-				<SearchPresenter
-					results={results}
-				/>
-			);
+			// console.log(this.state);
+			if(searchResults.length > 0) {
+				return(
+					<SearchPresenter
+						keyword={keyword}
+						searchResults={searchResults}
+					/>
+				);
+			}else{
+				return(
+					<SearchNoDataPresenter
+						keyword={keyword}
+					/>
+				);
+			}
 		}
 		return '';
 	}

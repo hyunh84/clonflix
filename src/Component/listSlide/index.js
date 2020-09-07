@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import VideoCard from 'Component/VideoCard';
 
 // import Swiper core and required components
 import SwiperCore, { Navigation } from 'swiper';
@@ -18,24 +18,6 @@ const ListSlide = ({title, type, data})=>{
 	}
 	const swiperNext = ()=>{
 		swiperEl.current.swiper.slideNext(600);
-	}
-	const averageFn = (average)=>{
-		var avg = average / 2;
-		var classTxt = 's';
-		var integer = parseInt(avg, 10);
-		var decimal = avg % integer;
-
-		classTxt += `0${Math.round(avg)}`;
-		classTxt += decimal <= 0.5 && decimal > 0 ? 'Half' : '';
-
-		return(
-			<>
-				<span className={`starAverage ${classTxt}`}>
-					{/* <em className="num">{avg}</em> */}
-				</span>
-			</>
-		);
-		
 	}
 
 	useEffect(()=>{
@@ -70,24 +52,17 @@ const ListSlide = ({title, type, data})=>{
 									tag={'li'}
 									onLoad={()=>slideItemLoaded()}
 								>
-									<Link to={`/detail/:${type}/:${info.id}`} className="videoCardBox">
-										<span className="img">
-											<span><img src={`https://image.tmdb.org/t/p/w300/${info.poster_path}`} alt="" /></span>
-										</span>
-										<div className="info">
-											<strong className="name">{info.original_name || info.title}</strong>
-											<span className="date">
-												{info.release_date && info.release_date.split('-')[0]}
-												{info.first_air_date &&  info.first_air_date.split('-')[0]}
-											</span>
-											{
-												info.vote_average && 
-												averageFn(info.vote_average)
-											}
-										</div>
-									</Link>
+									<VideoCard
+										mediaType={type}
+										videoID={info.id}
+										posterUrl={info.poster_path}
+										name={info.original_name || info.title}
+										date={
+											info.release_date ? info.release_date.split('-')[0] : info.first_air_date &&  info.first_air_date.split('-')[0]
+										}
+										rating={info.vote_average}
+									/>
 								</SwiperSlide>
-
 							))
 						}
 					</Swiper>

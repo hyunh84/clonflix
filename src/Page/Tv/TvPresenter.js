@@ -9,7 +9,6 @@ const TvPresenter = ({airingToday, topRated, popular})=>{
 	const {url} = useRouteMatch();
 
 	useEffect(()=>{
-		// setDepth1('tv');
 		setDepth1(url.split('/')[1]);
 	});
 
@@ -17,7 +16,7 @@ const TvPresenter = ({airingToday, topRated, popular})=>{
 		<div className="contents">
 
 			<ListSlide
-				title="금일방영"
+				title="오늘편성"
 				data={airingToday}
 				type={'tv'}
 			/>
@@ -29,7 +28,7 @@ const TvPresenter = ({airingToday, topRated, popular})=>{
 			/>
 	
 			<ListSlide
-				title="연관방송"
+				title="비슷한콘텐츠"
 				data={topRated}
 				type={'tv'}
 			/>

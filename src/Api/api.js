@@ -32,7 +32,7 @@ const searchApi = {
 			query: encodeURIComponent(keyword)
 		}
 	}),
-	keyword: (keyword)=> Api.get('search/keyword', {
+	keyword: (keyword)=> Api.get('search/multi', {
 		params:{
 			query: encodeURIComponent(keyword)
 		}

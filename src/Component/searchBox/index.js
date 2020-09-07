@@ -1,16 +1,15 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-export default SearchBox ()=>{
-	const history = useHistory();
+const SearchBox = ()=>{
 	const searchSubmit = (e)=>{
 		var target = e.target;
 		var keycode = e.keyCode;
 		var val = target.value;
 
 		if(keycode === 13) {
-			history.push(`/search/:${val}`);
+			// console.log(location);
+			// history.push(`/search/:${val}`);
+			window.location.href = `/search/:${val}`;
 		}
 	}
 
@@ -20,3 +19,5 @@ export default SearchBox ()=>{
 		</label>
 	);
 }
+
+export default SearchBox;

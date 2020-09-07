@@ -9,7 +9,6 @@ const MoviePresenter = ({nowPlaying,upcoming,popular,topRated})=>{
 	const {url} = useRouteMatch();
 
 	useEffect(()=>{
-		// setDepth1('tv');
 		setDepth1(url.split('/')[1]);
 	});
 
@@ -17,13 +16,13 @@ const MoviePresenter = ({nowPlaying,upcoming,popular,topRated})=>{
 		<div className="contents">
 
 			<ListSlide
-				title="상영예정"
+				title="개봉예정"
 				data={upcoming}
 				type={'movie'}
 			/>
 
 			<ListSlide
-				title="상영중"
+				title="개봉"
 				data={nowPlaying}
 				type={'movie'}
 			/>
@@ -35,7 +34,7 @@ const MoviePresenter = ({nowPlaying,upcoming,popular,topRated})=>{
 			/>
 
 			<ListSlide
-				title="연관영화"
+				title="비슷한영화"
 				data={topRated}
 				type={'movie'}
 			/>
