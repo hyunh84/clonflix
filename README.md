@@ -28,3 +28,6 @@ TMDB API와 REACT를 이용한 영화사이트
 
 ### TV
 - TV Popular, TV Top Rated, TV Airing
+
+### github homepage url
+- https://hyunh84.github.io/clonflix
