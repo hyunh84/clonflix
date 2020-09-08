@@ -35,7 +35,7 @@ export default class extends React.Component{
 
 	render() {
 		const {tvPopular, moviePopular, error, loading} = this.state;
-		if(!loading) {
+		if(!loading && !error) {
 			// console.log(this.state);
 			return(
 				<HomePresenter

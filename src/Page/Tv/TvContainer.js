@@ -40,7 +40,7 @@ export default class extends React.Component{
 
 	render() {
 		const {airingToday, topRated, popular, error, loading} = this.state;
-		if(!loading) {
+		if(!loading && !error) {
 			// console.log(this.state);
 			return(
 				<TvPresenter

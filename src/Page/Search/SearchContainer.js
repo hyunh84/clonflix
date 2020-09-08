@@ -42,7 +42,7 @@ export default class extends React.Component{
 	render() {
 		const {searchResults, keyword, error, loading} = this.state;
 
-		if(!loading) {
+		if(!loading && !error) {
 			// console.log(this.state);
 			if(searchResults.length > 0) {
 				return(

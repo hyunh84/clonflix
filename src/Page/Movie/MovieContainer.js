@@ -45,7 +45,7 @@ export default class extends React.Component{
 
 	render() {
 		const {nowPlaying, upcoming, popular, topRated, error, loading} = this.state;
-		if(!loading) {
+		if(!loading && !error) {
 			// console.log(this.state);
 			return(
 				<MoviePresenter
