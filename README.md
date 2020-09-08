@@ -31,3 +31,6 @@ TMDB API와 REACT를 이용한 영화사이트
 
 ### github homepage url
 - https://hyunh84.github.io/clonflix
+
+### netlify.com homepage url
+- https://vigilant-bhabha-3bd382.netlify.app
